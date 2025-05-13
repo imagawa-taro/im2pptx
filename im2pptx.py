@@ -69,7 +69,7 @@ class Image_pptx:
                         txBox.text_frame.paragraphs[0].font.size = Pt(8)
                         txBox.text_frame.paragraphs[0].alignment = PP_ALIGN.CENTER
                         #caption
-                        txBox = sld.shapes.add_textbox(left, top-height/10, width, height/10)
+                        txBox = sld.shapes.add_textbox(left, top-height/8, width, height/10)
                         txBox.text_frame.text = self.captions[pnum]
                         txBox.text_frame.paragraphs[0].font.size = Pt(10)
                         txBox.text_frame.paragraphs[0].font.bold = True
@@ -85,7 +85,7 @@ if __name__ == '__main__':
     if len(sys.argv) < 2:
         print('usage: python im_pptx.py [folder_path]')
         exit()
-    pptx = Image_pptx(row=5, column=6, order='row')  # order = 'row' or 'column'
+    pptx = Image_pptx(row=3, column=4, order='row')  # order = 'row' or 'column'
 
     # 画像ファイル名の設定
     folder_path = sys.argv[1]
@@ -93,7 +93,7 @@ if __name__ == '__main__':
 
     # captionの設定
     cp = ['a', 'b', 'c']
-    pptx.captions=[ cp[ii%2] for ii in range(len(pptx.img_files)) ]  # caption list
+    pptx.captions=[ cp[ii%3] for ii in range(len(pptx.img_files)) ]  # caption list
     pptx.captions_color = RGBColor(0,112,192)  # caption font color
 
     # slide 生成
